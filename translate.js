@@ -1,21 +1,25 @@
-const { launcher } = require("karma");
+var vowels = ["a", "e", "i", "o", "u"];
+var vowelsPlusY = ["a", "e", "i", "o", "u", "y"];
+var vowelStart = true;
 
-class translate {
-    constructor(language = 'en_us'){
-        this.language = language;
-    }
+function translate(text) {
+    //make string lowercase
+    text = text.toLowerCase();
+  //split text into an array
+  const textArray = text.split("");
+  var firstLetter = textArray[0];
+  //if first letter is a vowel
+  if (vowels.includes(firstLetter)) {
+    text = `${text}way`;
+  } else {
+    // if consonant and not y
+    do {
+    textArray.push(textArray.shift());
+    firstLetter = textArray[0];
+    vowelStart = vowelsPlusY.includes(firstLetter);
+    } while (!vowelStart);
+    text = textArray.join("") + "ay";
+  }
+  console.log(text);
+  return text;
 }
-
-translate(text){
-    //split text into an array
-    const textArray = text.split('');
-    var firstLetter = textArray[0];
-    //if first letter is a vowel
-    if (firstLetter == "a" || firstLetter == "e" || firstLetter == "i" || firstLetter == "o" || firstLetter == "u"){
-        text = `${text}way`;
-    }
-    console.log(text);
-}
-
-
-const translate = new translate();

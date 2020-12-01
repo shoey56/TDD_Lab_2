@@ -1,5 +1,4 @@
 describe('translate', function () {
-	// tests go in here
     // Multiple tests for words starting with different vowels.
     it("word starting with a", function() {
         expect(translate('apple')).toEqual('appleway')
@@ -25,6 +24,10 @@ describe('translate', function () {
 	it("word starting with one consonant", function() {
         expect(translate('work')).toEqual('orkway')
     });
+
+    it("word starting with y", function() {
+        expect(translate('you')).toEqual('ouyay')
+    });
     // 3. At least one test for words starting with two consonants.
     it("word starting with two consonants", function() {
         expect(translate('snow')).toEqual('owsnay')
@@ -37,5 +40,12 @@ describe('translate', function () {
     it("word starting with three consonants", function() {
         expect(translate('three')).toEqual('eethray')
     });
-	// 5. At least one test checking for lower case conversion.
+    // 5. At least one test checking for lower case conversion.
+    it("word contains uppercase letters", function() {
+        expect(translate('UpperCase')).toEqual('uppercaseway')
+    });
+
+    it("word contains uppercase letters", function() {
+        expect(translate('Shannon')).toEqual('annonshay')
+    });
 });
